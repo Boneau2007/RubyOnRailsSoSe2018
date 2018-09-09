@@ -3,3 +3,12 @@ applications:
   buildpack: ruby_buildpack
   services:
     - faq-Pg-Db
+  env:
+    RAILS_ENV: production
+    APP_ID: 'oauth id'
+    APP_SECRET: 'oauth secred'
+    AWS_ACCESS_KEY_ID: 'AKIAICVO5TVHV67J4FSA'
+    AWS_SECRET_ACCESS_KEY: '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'
+    AWS_REGION: 'eu-west-1'
+    AWS_BUCKET: a9s-railsvorlesung
+    AWS_PATH: home/railsvorlesung16/
