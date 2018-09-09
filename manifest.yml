@@ -1,0 +1,5 @@
+applications:
+- name: faq
+  buildpack: ruby_buildpack
+  services:
+    - faq-Pg-Db
