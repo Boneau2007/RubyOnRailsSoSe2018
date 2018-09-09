@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :question_categories
+  resources :categories
+  resources :answers
+  resources :questions
   get 'home/index'
   resources :userprofiles
   devise_for :users

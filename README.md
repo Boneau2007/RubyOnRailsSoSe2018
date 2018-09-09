@@ -75,3 +75,6 @@ setting up deployment endpoint "cf api https://api.de.a9s.eu" with email and pw
 
 
   rails g scaffold Userprofile name:string firstname:string age:integer  country:string  
+  rails generate migration AddRoleAndUsername
+  - Anwer und Question, die referencen hinzufügen und model verfollständigen 
+  - questionCategory noch in categorie id ändern

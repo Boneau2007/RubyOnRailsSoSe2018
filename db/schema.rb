@@ -10,7 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_09_142304) do
+ActiveRecord::Schema.define(version: 2018_09_09_213240) do
+
+  create_table "answers", force: :cascade do |t|
+    t.string "text"
+    t.integer "positivrating"
+    t.integer "negativerating"
+    t.boolean "staranswer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "question_categories", force: :cascade do |t|
+    t.integer "question_id"
+    t.integer "categorie"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "topic"
+    t.string "text"
+    t.integer "likes"
+    t.boolean "answered"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "userprofiles", force: :cascade do |t|
     t.string "name"
