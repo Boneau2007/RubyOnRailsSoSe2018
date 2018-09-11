@@ -1,5 +1,33 @@
-<h1>New Question</h1>
 
-<%= render 'form', question: @question %>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <h1>Neue Frage</h>
+        <div class="jumbotron table-bordered">
 
-<%= link_to 'Back', questions_path %>
+          <%= form_for @question, :html => { :class => "form-horizontal question" } do |f| %>
+
+            <div class="form-group">
+              <%= f.label :Titel, :class => 'control-label col-lg-2' %>
+              <div class="col-lg-10">
+                <%= f.text_field :topic, :class => 'form-control' %>
+              </div>
+              <%=f.error_span(:topic) %>
+            </div>
+
+              <hr/>
+
+              <div class="form-group">
+                <%= f.label :Text, :class => 'control-label col-lg-2' %>
+              <div class="col-lg-10">
+                <%= f.text_area :text, :class => 'form-control' %>
+              </div>
+                <%=f.error_span(:text) %>
+              </div>
+
+          </div>
+            <button type="submit" class="btn-primary img-rounded "><span>Frage stellen</span></button>
+          <% end %>
+        </div>
+    </div>
+    <%= link_to 'Back', questions_path %>
+</div>
