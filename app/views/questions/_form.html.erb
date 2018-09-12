@@ -1,37 +1,45 @@
-<%= form_with(model: question, local: true) do |form| %>
-  <% if question.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
+<%= form_with(model: @question, local: true) do |form| %>
 
-      <ul>
-      <% question.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+          <h1>Neue Frage</h>
+          <div class="jumbotron table-bordered">
+            <%= form_for @question, url: {action: "create"}, :html => { :class => "form-horizontal question" } do |f| %>
 
-  <div class="field">
-    <%= form.label :topic %>
-    <%= form.text_field :topic %>
-  </div>
+              <% if @question.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
 
-  <div class="field">
-    <%= form.label :text %>
-    <%= form.text_field :text %>
-  </div>
+                  <ul>
+                  <% @question.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                  </ul>
+                </div>
+              <% end %>
 
-  <div class="field">
-    <%= form.label :likes %>
-    <%= form.number_field :likes %>
-  </div>
-
-  <div class="field">
-    <%= form.label :answered %>
-    <%= form.check_box :answered %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+              <div class="form-group">
+                <%= f.label :Titel, :class => 'control-label col-lg-2' %>
+                <div class="col-lg-10">
+                  <%= f.text_field :topic, :class => 'form-control' %>
+                </div>
+                <%=f.error_span(:topic) %>
+              </div>
+                <hr/>
+                <div class="form-group">
+                  <%= f.label :Text, :class => 'control-label col-lg-2' %>
+                <div class="col-lg-10">
+                  <%= f.text_area :text, :class => 'form-control' , size: "60x12"%>
+                </div>
+                  <%=f.error_span(:text) %>
+                </div>
+                
+                <div class="actions">
+                  <%=f.submit "Frage stellen", :class=>"btn-primary img-rounded"%>
+                </div>
+            </div>
+            <% end %>
+          </div>
+      </div>
   </div>
 <% end %>

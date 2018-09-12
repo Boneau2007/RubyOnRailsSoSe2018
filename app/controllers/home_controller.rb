@@ -1,9 +1,12 @@
 class HomeController < ApplicationController
-	
+
 	before_action :get_data, only: [:index, :show]
 	# GET /questions
-	def index 
+	def index
 		@questions = Question.all
-		@question = @questions.find(params[:questions_id])
+	end
+
+	def get_data
+		@questions = Question.all
 	end
 end

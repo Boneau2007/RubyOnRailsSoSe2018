@@ -1,18 +1,31 @@
 <div class="row">
-  <% @questions.each do |question| %>  
-  
-    <div class="col-lg-3 col-md-4 col-xs-6"
-         style="min-height: 150px"
-         data-toggle="tooltip" 
-         title="<%= question.titel %>">
-     <%= link_to question_tag(create_path(question.picture.url(:medium)),
-         class: "img-fluid img-thumbnail"), 
-         create_path(image.picture.url),     
-         data: { title: image.name, 
-                 footer: @gallery.name, 
-                 toggle: "lightbox", 
-                 gallery: "multiimages" },
-         class: "" %>
+  <div class="well center ">
+    <h1>Projekt FAQ in RubyOnRailsSoSe2018</h1>
+    <h4>Hier können Fragen zu verschiedenen Themen gestellt werden.</h4>
+  </div>
+</div>
+
+<div class='row'>
+  <% @questions.each do |question| %>
+      <div class='col-lg-offset-0 col-lg-4 col-md-offeset-0 col-md-6 col-xs-10 col-xs-offset-1'>
+        <div class="card text-white bg-secondary mb-3" style="max-width: 20rem;">
+          <div class="panel-body">
+            <p class='lead'><%= truncate(question.title, length:50) %></p>
+            <p><%= truncate(question.text, length: 100) %></p>
+            <center>
+              <p>
+
+              </p>
+               <div class='panel-footer img-circle' >
+              <small>
+                Created at:  <%= time_ago_in_words(question.created_at) %> ago,
+                <br />
+                last updated: <%= time_ago_in_words(question.updated_at) %> ago
+              </small>
+               <div/>
+            </center>
+          </div>
+        </div>
     </div>
   <% end %>
 </div>
