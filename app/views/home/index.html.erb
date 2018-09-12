@@ -1,2 +1,18 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="row">
+  <% @questions.each do |question| %>  
+  
+    <div class="col-lg-3 col-md-4 col-xs-6"
+         style="min-height: 150px"
+         data-toggle="tooltip" 
+         title="<%= question.titel %>">
+     <%= link_to question_tag(create_path(question.picture.url(:medium)),
+         class: "img-fluid img-thumbnail"), 
+         create_path(image.picture.url),     
+         data: { title: image.name, 
+                 footer: @gallery.name, 
+                 toggle: "lightbox", 
+                 gallery: "multiimages" },
+         class: "" %>
+    </div>
+  <% end %>
+</div>
