@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  text: MyString
-  positivrating: 1
-  negativerating: 1
+  text: MyText
+  positiv_rating: 1
+  negative_rating: 1
   staranswer: false
+  question: one
 
 two:
-  text: MyString
-  positivrating: 1
-  negativerating: 1
+  text: MyText
+  positiv_rating: 1
+  negative_rating: 1
   staranswer: false
+  question: two

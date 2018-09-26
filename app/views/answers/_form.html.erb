@@ -13,22 +13,27 @@
 
   <div class="field">
     <%= form.label :text %>
-    <%= form.text_field :text %>
+    <%= form.text_area :text %>
   </div>
 
   <div class="field">
-    <%= form.label :positivrating %>
-    <%= form.number_field :positivrating %>
+    <%= form.label :positiv_rating %>
+    <%= form.number_field :positiv_rating %>
   </div>
 
   <div class="field">
-    <%= form.label :negativerating %>
-    <%= form.number_field :negativerating %>
+    <%= form.label :negative_rating %>
+    <%= form.number_field :negative_rating %>
   </div>
 
   <div class="field">
     <%= form.label :staranswer %>
     <%= form.check_box :staranswer %>
+  </div>
+
+  <div class="field">
+    <%= form.label :question_id %>
+    <%= form.text_field :question_id %>
   </div>
 
   <div class="actions">

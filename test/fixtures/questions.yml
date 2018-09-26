@@ -2,12 +2,12 @@
 
 one:
   topic: MyString
-  text: MyString
+  text: MyText
   likes: 1
   answered: false
 
 two:
   topic: MyString
-  text: MyString
+  text: MyText
   likes: 1
   answered: false

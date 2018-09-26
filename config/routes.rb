@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :images
   resources :question_categories
   resources :categories
   resources :answers

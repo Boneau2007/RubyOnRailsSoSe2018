@@ -69,6 +69,6 @@ class QuestionCategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_category_params
-      params.require(:question_category).permit(:question_id, :categorie)
+      params.require(:question_category).permit(:question_id, :categorie_id)
     end
 end

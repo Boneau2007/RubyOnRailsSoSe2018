@@ -14,8 +14,9 @@ class AnswersTest < ApplicationSystemTestCase
     visit answers_url
     click_on "New Answer"
 
-    fill_in "Negativerating", with: @answer.negativerating
-    fill_in "Positivrating", with: @answer.positivrating
+    fill_in "Negative Rating", with: @answer.negative_rating
+    fill_in "Positiv Rating", with: @answer.positiv_rating
+    fill_in "Question", with: @answer.question_id
     fill_in "Staranswer", with: @answer.staranswer
     fill_in "Text", with: @answer.text
     click_on "Create Answer"
@@ -28,8 +29,9 @@ class AnswersTest < ApplicationSystemTestCase
     visit answers_url
     click_on "Edit", match: :first
 
-    fill_in "Negativerating", with: @answer.negativerating
-    fill_in "Positivrating", with: @answer.positivrating
+    fill_in "Negative Rating", with: @answer.negative_rating
+    fill_in "Positiv Rating", with: @answer.positiv_rating
+    fill_in "Question", with: @answer.question_id
     fill_in "Staranswer", with: @answer.staranswer
     fill_in "Text", with: @answer.text
     click_on "Update Answer"

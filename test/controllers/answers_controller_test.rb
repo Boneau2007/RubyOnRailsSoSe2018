@@ -17,7 +17,7 @@ class AnswersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create answer" do
     assert_difference('Answer.count') do
-      post answers_url, params: { answer: { negativerating: @answer.negativerating, positivrating: @answer.positivrating, staranswer: @answer.staranswer, text: @answer.text } }
+      post answers_url, params: { answer: { negative_rating: @answer.negative_rating, positiv_rating: @answer.positiv_rating, question_id: @answer.question_id, staranswer: @answer.staranswer, text: @answer.text } }
     end
 
     assert_redirected_to answer_url(Answer.last)
@@ -34,7 +34,7 @@ class AnswersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update answer" do
-    patch answer_url(@answer), params: { answer: { negativerating: @answer.negativerating, positivrating: @answer.positivrating, staranswer: @answer.staranswer, text: @answer.text } }
+    patch answer_url(@answer), params: { answer: { negative_rating: @answer.negative_rating, positiv_rating: @answer.positiv_rating, question_id: @answer.question_id, staranswer: @answer.staranswer, text: @answer.text } }
     assert_redirected_to answer_url(@answer)
   end
 

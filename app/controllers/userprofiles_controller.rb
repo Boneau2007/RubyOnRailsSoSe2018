@@ -19,6 +19,7 @@ class UserprofilesController < ApplicationController
 
   # GET /userprofiles/1/edit
   def edit
+    @userprofile = current_user.userprofile
   end
 
   # POST /userprofiles
@@ -40,12 +41,13 @@ class UserprofilesController < ApplicationController
   # PATCH/PUT /userprofiles/1
   # PATCH/PUT /userprofiles/1.json
   def update
+    @userprofile = current_user.userprofile
     respond_to do |format|
       if @userprofile.update(userprofile_params)
-        format.html { redirect_to @userprofile, notice: 'Userprofile was successfully updated.' }
-        format.json { render :show, status: :ok, location: @userprofile }
+        format.html { redirect_to edit_userprofile_path, notice: 'Userprofile was successfully updated.' }
+        format.json { render :edit, status: :ok, location: @userprofile }
       else
-        format.html { render :edit }
+        format.html { render edit_userprofile_path, flash: { error: "Could not be updated!" } }
         format.json { render json: @userprofile.errors, status: :unprocessable_entity }
       end
     end

@@ -1,2 +1,9 @@
 
-<%= render 'form', category: @category %>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <h2>Neue Frage</h2>
+        <div class="jumbotron table-bordered">
+          <%= render 'form', question: @question %>
+        </div>
+      </div>
+</div>

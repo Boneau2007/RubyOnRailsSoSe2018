@@ -1,6 +1,5 @@
 class Answer < ApplicationRecord
-  belongs_to :userprofile
-  belongs_to :question 
-  #An anwer has many Comments
-  has_many :comments, class_name: "Answer"
+  belongs_to :question
+  has_many :comments, class_name: "Answer", foreign_key: "answer_id"
+  belongs_to :answer, class_name: "Answer", optional: true
 end

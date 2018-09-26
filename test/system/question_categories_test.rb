@@ -14,7 +14,7 @@ class QuestionCategoriesTest < ApplicationSystemTestCase
     visit question_categories_url
     click_on "New Question Categorie"
 
-    fill_in "Categorie", with: @question_category.categorie
+    fill_in "Categorie", with: @question_category.categorie_id
     fill_in "Question", with: @question_category.question_id
     click_on "Create Question categorie"
 
@@ -26,7 +26,7 @@ class QuestionCategoriesTest < ApplicationSystemTestCase
     visit question_categories_url
     click_on "Edit", match: :first
 
-    fill_in "Categorie", with: @question_category.categorie
+    fill_in "Categorie", with: @question_category.categorie_id
     fill_in "Question", with: @question_category.question_id
     click_on "Update Question categorie"
 
