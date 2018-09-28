@@ -5,14 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create(
+@admin = User.create(
   username: "Admin",
   role: "admin",
   email: "admin@faq.de",
   password: "123456",
   password_confirmation: "123456"
 )
-User.create(
+@user = User.create(
   username: "Benutzer1",
   email: "benutzer2@faq.de",
   password: "123456",
@@ -115,24 +115,57 @@ Category.create(
 Question.create(
   topic: "Wie putze ich",
   text: "Wie putz man?",
+  user: @admin,
   answered: false
 )
 Question.create(
   topic: "Wozu dienen Computer",
   text: "Meine Frage an die Community ist, wie man Comupter sinnvoll nutzen kann?",
+  user: @admin,
   answered: false
 )
 Question.create(
   topic: "Gute Steaks",
   text: "Wie bereitet man richtig gute Steaks zu?",
+  user: @admin,
   answered: false
 )
+
+Answer.create(text: "Man putzt so nicht",
+                question_id: 1,
+                user: @admin
+              )
+Answer.create(text: "Doch man putzt so",
+                question_id: 1, answer_id: 1,
+                user: @admin
+              )
+Answer.create(text: "Nein macht man nicht",
+                question_id: 1, answer_id: 2,
+                user: @admin
+              )
+Answer.create(text: "Gute Steaks brauchen 4 min auf jeder seite",
+                question_id: 3,
+                user: @admin
+              )
+
+
 QuestionCategorie.create(
   question_id: 1,
   category_id: 1
 )
-
-Answer.create(text: "Man putzt so nicht", question_id: 1)
-Answer.create(text: "Doch man putzt so", question_id: 1, answer_id: 1)
-Answer.create(text: "Nein macht man nicht", question_id: 1, answer_id: 2)
-Answer.create(text: "Gute Steaks brauchen 4 min auf jeder seite", question_id: 3)
+QuestionCategorie.create(
+  question_id: 2,
+  category_id: 1
+)
+QuestionCategorie.create(
+  question_id: 3,
+  category_id: 1
+)
+QuestionCategorie.create(
+  question_id: 1,
+  category_id: 2
+)
+QuestionCategorie.create(
+  question_id: 2,
+  category_id: 2
+)

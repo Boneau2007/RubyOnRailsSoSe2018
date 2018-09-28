@@ -5,24 +5,9 @@
   </div>
 </div>
 <div class="container">
-<div class='row'>
-<% @questions.each do |question| %>
-<div class="panel-body card col-xs-12 col-sm-4 mb-2 col-lg-offset-0 col-lg-4" style="max-width: 20rem;">
-<p class='lead'><%= truncate(question.topic, length:50) %></p>
-<p><%= truncate(question.text, length: 50) %></p>
-<center>
-<div class='panel-footer card-text' >
-<small>
-Erstellt am: <%= time_ago_in_words(question.created_at) %>
-</small>
-</div>
-<%= link_to 'Weiterlesen', question, :class => "card-read-more btn btn-link btn-block" %>
-<% if @user && @user.role.equal?("admin") %>
-<td><%= link_to 'Edit', edit_question_path(question) %></td>
-<td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-<% end %>
-</center>
-</div>
-<% end %>
-</div>
+  <div class='row'>
+    <% @questions.each do |question| %>
+    <%= render 'card', question: question %>
+    <% end %>
+  </div>
 </div>

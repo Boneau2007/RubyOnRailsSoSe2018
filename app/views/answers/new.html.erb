@@ -1,5 +1,9 @@
-<h1>New Answer</h1>
 
-<%= render 'form', answer: @answer %>
-
-<%= link_to 'Back', answers_path %>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <h2>Neue Antwort</h2>
+        <div class="jumbotron table-bordered">
+          <%= render 'form', answer: @answer %>
+        </div>
+    </div>
+</div>

@@ -10,6 +10,8 @@ class UserprofilesController < ApplicationController
   # GET /userprofiles/1
   # GET /userprofiles/1.json
   def show
+    @profile = Userprofile.find(params[:id])
+      @current = Userprofile.find(params[:id])
   end
 
   # GET /userprofiles/new

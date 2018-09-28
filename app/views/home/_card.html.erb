@@ -1,0 +1,20 @@
+
+        <div class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="card img-card">
+                          <%= image_tag(question.cover_attachment_path, class: 'img-card img-thumbnail') %>
+                            <div class="card-content">
+                                <h4 class="card-title">
+<p class='lead'><%= truncate(question.topic, length:50) %></p>                                </h4>
+                                <p><%= truncate(question.text, length: 50) %></p>
+                            </div>
+                            <div class="card-read-more">
+                              <%= link_to 'Weiterlesen', question, :class => "card-read-more btn btn-link btn-block" %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

@@ -1,17 +1,18 @@
+<%#= @question.inspect %>
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <div class="jumbotron">
             <article class="col-md-12 img-rounded" style="background-color: azure; padding: 0px 10px 0px 10px">
                 <div class="moderator-details-head">
-                    <strong>Frage</strong> von
-                    @Html.ActionLink(Model.Question.Questioner.UserName, "Details", "Questions", new { id = Model.Question.Id }, new { @class = "text-info" })
-                    @Html.Partial("AnsweredForm")
+                    <strong>Frage</strong> von <%= link_to @userprofile.username, controller: "userprofiles",  action: "show", :class => 'text-info' %>
+                    <%= render 'answered', question: @question %>
                     <br />
-                    <span>Erstellt am: <%= time_ago_in_words(@question.created_at) %></span>
+                    <span>Created: <%= time_ago_in_words(@question.created_at) %></span>
                 </div>
                 <div Class="moderator-details-body" style="margin: 10px">
                     <h1><%= @question.topic %></h1>
                     <br/>
+                    <hr/>
                     <div>
                         <p><%= @question.text %></p>
                     </div>
@@ -21,19 +22,23 @@
                         <tr>
                             <td>
                                 <div class="col-md-1">
-                                    @if (Model.Question.Answered){
-                                      @Html.ActionLink("Antworten", "Create", "Answers", new {id = Model.Question.Id}, new {@class = "btn btn-info btn-sm disabled"})
-                                    }
-                                    else{
-                                      @Html.ActionLink("Antworten", "Create", "Answers", new {id = Model.Question.Id}, new {@class = "btn btn-info btn-sm "})
-                                    }
+                                  <% if @question.answered == true %>
+                                  <div class = "btn btn-info btn-sm disabled">
+                                  <%= link_to "Antworten", controller: "answers",  action: "new",:question_id => @question.id %>
+                                  </div>
+                                    <% else %>
+                                    <div class = "btn btn-info btn-sm">
+                                    <%= link_to "Antworten", controller: "answers",  action: "new",:question_id => @question.id %>
+                                  </div>
+                                  <% end %>
                                 </div>
                             </td>
                             <td>
                                 <div>
                                     <p>
-                                      @Html.ActionLink(" ", "LikeQuestions", "Questions", new {id = Model.Question.Id}, new {@class = "glyphicon glyphicon-thumbs-up "})
-
+                                      <%= link_to  controller: "questions",  action: "like_question",:question => @question.id, class: "btn btn-default" do %>
+                                        <i class="glyphicon glyphicon-thumbs-up"></i>
+                                      <% end %>
                                     </p>
                                 </div>
                             </td>
@@ -47,14 +52,14 @@
                 </div>
             </article>
             <div class="center-block">
-                <center>Antworten </center>
+                <center>Antworten: <% @answers.size %> </center>
             </div>
             <br/>
             <hr/>
-            @foreach (var answer in Model.Answers)
-            {
-                @Html.Partial("/Views/Answers/Details.cshtml", answer)
-            }
+
+            <% @answers.each do |answer| %>
+              <%= render 'answers/view', answer: answer %>
+            <% end %>
         </div>
     </div>
 </div>

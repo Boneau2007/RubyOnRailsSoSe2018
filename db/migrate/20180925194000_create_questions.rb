@@ -5,7 +5,7 @@ class CreateQuestions < ActiveRecord::Migration[5.2]
       t.text :text, :limit => 511, :null => false
       t.integer :likes
       t.boolean :answered
-      t.references :userprofile, foreign_key: true
+      t.references :user, foreign_key: true
       t.timestamps
     end
   end

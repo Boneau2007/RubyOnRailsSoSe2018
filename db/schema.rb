@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_25_201900) do
+ActiveRecord::Schema.define(version: 2018_09_27_134321) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -39,11 +39,13 @@ ActiveRecord::Schema.define(version: 2018_09_25_201900) do
     t.integer "negative_rating"
     t.boolean "staranswer"
     t.integer "question_id"
-    t.integer "answer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "answer_id"
+    t.integer "user_id"
     t.index ["answer_id"], name: "index_answers_on_answer_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
+    t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -66,18 +68,18 @@ ActiveRecord::Schema.define(version: 2018_09_25_201900) do
     t.text "text", limit: 511, null: false
     t.integer "likes"
     t.boolean "answered"
-    t.integer "userprofile_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["userprofile_id"], name: "index_questions_on_userprofile_id"
+    t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
   create_table "userprofiles", force: :cascade do |t|
-    t.string "name", limit: 63, null: false
-    t.string "firstname", limit: 63, null: false
-    t.integer "age", limit: 3, null: false
-    t.integer "sex", limit: 31, null: false
-    t.string "country", limit: 63, null: false
+    t.string "name"
+    t.string "firstname"
+    t.integer "age"
+    t.integer "sex"
+    t.string "country"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

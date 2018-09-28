@@ -2,12 +2,12 @@
 
 <p>
   <strong>Question:</strong>
-  <%= @question_category.question %>
+  <%= @question_category.question.topic %>
 </p>
 
 <p>
   <strong>category:</strong>
-  <%= @question_category.category %>
+  <%= @question_category.category.name %>
 </p>
 
 <%= link_to 'Edit', edit_question_category_path(@question_category) %> |

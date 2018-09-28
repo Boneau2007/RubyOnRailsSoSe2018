@@ -10,6 +10,13 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
+  @question = Question.find(params[:id])
+
+    @answers = Answer.where(question_id: @question.id).order(created_at: :desc)
+    @users = User.includes(:userprofile).all
+    @question = Question.find(params[:id])
+    @userprofile = @users.find(@question.user_id)
+
   end
 
   # GET /questions/new
@@ -25,9 +32,10 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = Question.new(question_params)
-
+    @question.user_id = current_user.id
     respond_to do |format|
       if @question.save
+                QuestionCategorie.create(category_id: params[:categorie_id], question_id: @question.id)
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
         format.json { render :show, status: :created, location: @question }
       else
@@ -61,6 +69,57 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def switch_answered
+    @question = Question.find(params[:id ])
+    if @question.answered
+      @question.update(answered: false)
+    else
+      @question.update(answered: true)
+    end
+    respond_to do |format|
+      format.html { redirect_to question_path(params[:id]), notice: 'Question was successfully updated.' }
+    end
+end
+
+    def like_question
+      @question = Question.find(params[:id])
+      respond_to do |format|
+        format.html { redirect_to question_path(params[:id]), notice: 'Question was successfully updated.' }
+      end
+    end
+
+    def negative_rating
+      respond_to do |format|
+        format.html { redirect_to question_path(params[:id]), notice: 'Question was successfully updated.' }
+      end
+    end
+
+    def positiv_rating
+      respond_to do |format|
+        format.html { redirect_to question_path(params[:id]), notice: 'Question was successfully updated.' }
+      end
+    end
+
+    def set_star_answer
+      @answers = Answer.joins(:question).where(params[:id]).all
+      @answer = @answers.find(params[:answer])
+      if @answer.staranswer
+        @answer.update(staranswer: false)
+      else
+        @answer.update(staranswer: true)
+      end
+      respond_to do |format|
+        format.html { redirect_to question_path(params[:id]), notice: 'Question was successfully updated.' }
+      end
+    end
+
+    def search
+        topic = params[:topic] || nil
+        questions = []
+        questions = Question.where('name LIKE ?', "%#{topic}%") if term
+        render json: questions
+      end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_question
@@ -69,6 +128,6 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:topic, :text, :likes, :answered)
+      params.require(:question).permit(:topic, :text, :likes, :answered, :category_ids)
     end
 end

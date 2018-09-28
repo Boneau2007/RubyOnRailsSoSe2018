@@ -1,8 +1,7 @@
-<%= form_with(model: answer, local: true) do |form| %>
+<%= form_for @answer, url: question_answers_path(params[:question_id], @answer) do |form| %>
   <% if answer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
-
       <ul>
       <% answer.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,32 +10,20 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :text %>
-    <%= form.text_area :text %>
-  </div>
 
-  <div class="field">
-    <%= form.label :positiv_rating %>
-    <%= form.number_field :positiv_rating %>
+<div class="form-group">
+  <%= form.label :text, :class => "col-md-4 control-label" %>
+  <div style="padding: 10px margin: 10px">
+    <button class="glyphicon glyphicon-bold"></button>
+    <button class="glyphicon glyphicon-italic"></button>
+    <button class="glyphicon glyphicon-list"></button>
   </div>
+  <%= form.text_area :text, :class => "form-control input-lg"%>
+</div>
+</hr>
 
-  <div class="field">
-    <%= form.label :negative_rating %>
-    <%= form.number_field :negative_rating %>
-  </div>
+<div class="actions">
+  <%= form.submit "Antworten", :class => 'btn btn-primary moderator-form-footer' %>
+</div>
 
-  <div class="field">
-    <%= form.label :staranswer %>
-    <%= form.check_box :staranswer %>
-  </div>
-
-  <div class="field">
-    <%= form.label :question_id %>
-    <%= form.text_field :question_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>

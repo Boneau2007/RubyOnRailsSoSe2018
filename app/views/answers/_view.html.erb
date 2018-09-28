@@ -1,0 +1,44 @@
+<% user = User.find(answer.user_id) %>
+<%#= answer.inspect %>
+<div class="row"  style="padding: 10px;">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="form-group">
+            <div class="col-md-12 img-rounded" style="background-color: azure; padding: 10px;">
+                <div>
+                    <strong>Antwort</strong> von <%= link_to user.username, controller: "userprofiles",  action: "show", :class => 'text-info' %>
+
+                    <% if answer.staranswer == true %>
+                        <span>
+                          <%= link_to  controller: "questions",  action: "set_star_answer",:answer => answer.id, class: "btn btn-default" do %>
+                            <i class="glyphicon glyphicon-star"></i>
+                          <% end %></span>
+                        <% else %>
+                          <span>
+                            <%= link_to  controller: "questions",  action: "set_star_answer",:answer => answer.id, class: "btn btn-default" do %>
+                              <i class="glyphicon glyphicon-star-empty"></i>
+                            <% end %>
+                          </span>
+                        <% end %>
+                    <br/>
+                    <span class="lead p2">Created: <%= time_ago_in_words(answer.created_at) %></span>
+                </div>
+                <p>
+                  <%= link_to  controller: "questions",  action: "positiv_rating",:answer => answer.id, class: "btn btn-default" do %>
+                    <i class="glyphicon glyphicon-thumbs-up"></i>
+                  <% end %>
+                  <%= answer.positiv_rating %>
+                  <%= link_to  controller: "questions",  action: "negative_rating",:answer => answer.id, class: "btn btn-default" do %>
+                    <i class="glyphicon glyphicon-thumbs-down"></i>
+                  <% end %>
+                  <%= answer.negative_rating %>
+                </p>
+                <hr/>
+                <div class="container moderator-form-body col-md-8">
+                    <p>
+                    <%= answer.text %>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

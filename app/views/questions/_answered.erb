@@ -1,0 +1,20 @@
+<span style="padding: 5px">
+  <% if @question.answered == false %>
+    <% if current_user.id == @userprofile.id %>
+    <%= link_to  controller: "questions",  action: "switch_answered",:question => question.id, class: "btn btn-default" do %>
+      <i class="glyphicon glyphicon-remove-circle alert-danger"></i>
+    <% end %>
+    <% else %>
+      <span class="glyphicon glyphicon-remove-circle alert-danger" style="padding: 5px"></span>
+  <% end %>
+
+  <% else %>
+    <% if current_user.id == @userprofile.id  %>
+    <%= link_to  controller: "questions",  action: "switch_answered",:question => question.id, class: "btn btn-default" do %>
+      <i class="glyphicon glyphicon-ok-circle alert-success"></i>
+    <% end %>
+    <% else %>
+      <span class="glyphicon glyphicon-ok-circle alert-success" style="padding: 5px"></span>
+    <% end %>
+  <% end %>
+</span>
