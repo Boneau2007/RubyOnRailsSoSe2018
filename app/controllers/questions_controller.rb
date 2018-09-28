@@ -31,6 +31,8 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
+  #@userprofile = Question.create! params.permit(:content)
+  #@userprofile.image.attach(params[:userprofile][:image])
     @question = Question.new(question_params)
     @question.user_id = current_user.id
     respond_to do |format|
@@ -128,6 +130,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:topic, :text, :likes, :answered, :category_ids)
+      params.require(:question).permit(:topic, :text, :likes, :answered, :category_ids, :image)
     end
 end

@@ -27,8 +27,9 @@ class UserprofilesController < ApplicationController
   # POST /userprofiles
   # POST /userprofiles.json
   def create
+  @userprofile = Userprofile.create! params.require(:userprofile).permit(:content)
     @userprofile = Userprofile.new(userprofile_params)
-
+    @userprofile.image.attach(params[:userprofile][:image])
     respond_to do |format|
       if @userprofile.save
         format.html { redirect_to @userprofile, notice: 'Userprofile was successfully created.' }
@@ -39,7 +40,6 @@ class UserprofilesController < ApplicationController
       end
     end
   end
-
   # PATCH/PUT /userprofiles/1
   # PATCH/PUT /userprofiles/1.json
   def update
@@ -73,6 +73,6 @@ class UserprofilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def userprofile_params
-      params.require(:userprofile).permit(:name, :firstname, :age, :country)
+      params.require(:userprofile).permit(:name, :firstname, :age, :country, :image)
     end
 end

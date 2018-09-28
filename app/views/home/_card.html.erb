@@ -4,7 +4,12 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-4">
                         <div class="card img-card">
+
+                          <%# if question.image != nil %>
+                          <%#= image_tag question.image class: 'img-card img-thumbnail' %>
+                          <%# else %>
                           <%= image_tag(question.cover_attachment_path, class: 'img-card img-thumbnail') %>
+                          <%# end %>
                             <div class="card-content">
                                 <h4 class="card-title">
 <p class='lead'><%= truncate(question.topic, length:50) %></p>                                </h4>

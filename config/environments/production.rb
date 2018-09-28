@@ -100,23 +100,22 @@ Rails.application.configure do
 
 
 
-    config.paperclip_defaults = {
-      :storage => :fog,
-      :fog_credentials => {
-        :provider              => "AWS",
-        :region                => 'eu-west-1',
-        :scheme                => 'https',
-        :aws_access_key_id     => ENV['AWS_ACCESS_KEY_ID'],
-        :aws_secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
-      },
-      :fog_directory => "#{ENV['AWS_BUCKET']}/#{ENV['AWS_PATH']}"
+    #config.paperclip_defaults = {
+    #  :storage => :fog,
+    #  :fog_credentials => {
+    #    :provider              => "AWS",
+    #    :region                => 'eu-west-1',
+    #    :scheme                => 'https',
+    #    :aws_access_key_id     => ENV['AWS_ACCESS_KEY_ID'],
+    #    :aws_secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    #  },
+    #  :fog_directory => "#{ENV['AWS_BUCKET']}/#{ENV['AWS_PATH']}"
 
       # for EMAIL - SENDGRID
-      config.action_mailer.delivery_method = :smtp
+      #config.action_mailer.delivery_method = :smtp
 
-      config.action_mailer.default_url_options = {
-        :host => 'https://faq',
-        :protocol => 'https'
-      }
-
+      #config.action_mailer.default_url_options = {
+      #  :host => 'https://faq',
+      #  :protocol => 'https'
+      #}
 end

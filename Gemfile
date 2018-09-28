@@ -38,7 +38,9 @@ gem 'twitter-bootstrap-rails'
 
 # Use ActiveStorage variant
  gem 'mini_magick', '~> 4.8'
-
+ gem 'rails_serve_static_assets'
+ gem 'rails_stdout_logging'
+ gem 'rails_12factor'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -61,6 +63,7 @@ end
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
+  gem 'pg', '~> 1.1.3'
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15', '< 4.0'
@@ -70,10 +73,6 @@ group :test do
 end
 group :production do
   #Adding PG-Gemfile to Project
-    gem 'pg', '~> 1.1.3'
-
-  gem 'rails_12factor'
-
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
